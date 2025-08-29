@@ -1,5 +1,6 @@
 import { PostCard } from "../../entities/post/ui/PostCard";
-import "./PostList.css";
+import styles from "./PostList.module.css";
+
 
 interface Post {
   userId: number;
@@ -14,7 +15,7 @@ interface PostListProps {
 
 export const PostList = ({ posts }: PostListProps) => {
   return (
-    <section className="post-list">
+    <section className={styles.postList}>
       {posts.map(post => (
         <PostCard key={post.id} userId={post.userId} title={post.title} body={post.body} />
       ))}

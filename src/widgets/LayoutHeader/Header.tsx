@@ -1,10 +1,10 @@
-import "./header.css";
+import styles from "./header.module.css";
 
 export const Header = () => {
   return (
-    <header className="header">
-      <div className="header__container">
-        <h1 className="header__title">HEADER</h1>
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <h1 className={styles.headerTitle}>HEADER</h1>
       </div>
     </header>
   );
