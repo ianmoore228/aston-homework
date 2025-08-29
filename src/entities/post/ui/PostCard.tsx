@@ -1,4 +1,4 @@
-import "./PostCard.css";
+import styles from "./PostCard.module.css";
 
 interface PostCardProps {
     title: string;
@@ -8,10 +8,10 @@ interface PostCardProps {
   
   export const PostCard = ({ title, body, userId }: PostCardProps) => {
     return (
-      <div className="post-card">
-        <div className="post-card__header"><p className="post-card__userId">ID пользователя:{userId}</p><h2 className="post-card__title">{title}</h2></div>
+      <div className={styles.postCard}>
+        <div className={styles.postCardHeader}><p className={styles.postCardUserId}>ID пользователя:{userId}</p><h2 className={styles.postCardTitle}>{title}</h2></div>
         <hr />
-        <p className="post-card__body">{body}</p>
+        <p className={styles.postCardBody}>{body}</p>
       </div>
     );
   };
