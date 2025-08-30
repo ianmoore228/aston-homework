@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Header } from "../../widgets/LayoutHeader/Header";
-import { Footer } from "../../widgets/LayoutFooter/Footer";
+import { Header } from "@/widgets/LayoutHeader";
+import { Footer } from "@/widgets/LayoutFooter";
 import styles from "./MainLayout.module.css";
 
 interface MainLayoutProps {
