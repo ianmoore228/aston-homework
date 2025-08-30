@@ -1,21 +1,13 @@
-# Домашняя работа №1
+# Домашняя работа №2
 
 Задание:
 
-1. Инициализировать проект с помощью Vite + TypeScript.
+1. Реализовать ThemeContext и переключение темы:
+   - ThemeProvider, useTheme → src/shared/lib/theme/
+   - ThemeSwitcher → src/features/ThemeSwitcher/ui/
 
-2. Создать:
+2. Использовать React.Fragment и key в списках.
 
-   - App.tsx → src/app/
+3. Модалка "О проекте" через React.Portal → src/shared/ui/Modal/
 
-   - MainLayout.tsx → src/shared/layouts/
-
-   - Header, Footer → src/widgets/LayoutHeader/, LayoutFooter/
-
-3. Отобразить список постов-заглушек:
-
-   - PostList → src/widgets/PostList/
-
-   - PostCard → src/entities/post/ui/PostCard.tsx
-
-4. Передавать данные через props, компонент — функциональный.
+4. Кнопки с обработкой событий → src/shared/ui/Button/
