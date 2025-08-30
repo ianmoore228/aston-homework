@@ -1,10 +1,14 @@
-import "./header.css";
+import styles from "./header.module.css";
+import { ThemeSwitcher } from "@/features/themeSwitcher";
+import { AboutModalButton } from "@/features/About";
 
 export const Header = () => {
   return (
-    <header className="header">
-      <div className="header__container">
-        <h1 className="header__title">HEADER</h1>
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <AboutModalButton/>
+        <h2 className={styles.headerTitle}>HEADER</h2>
+        <ThemeSwitcher />
       </div>
     </header>
   );
