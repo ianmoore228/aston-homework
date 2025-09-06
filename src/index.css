@@ -6,23 +6,34 @@
     box-sizing: border-box;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
 [data-theme="light"] {
-    --primary-color: rgb(242, 242, 248); 
-    --body-bg-color: #ffffff;        
-    --body-text-color: #000000;      
-    --body-text-color-accent: #1a1a2e;        
-    --block-background-color: #fafaff;       
-    --border-color: #dcdcdc;         
-  }
-  
-  [data-theme="dark"] {
-    --primary-color: rgb(36, 36, 40); 
-    --body-bg-color: #121212;         
-    --body-text-color: #cdcdcd;      
-    --body-text-color-accent: #ffffff;         
-    --block-background-color: #1c1c1c;       
-    --border-color: #333333;         
-  }
+    --primary-color: rgb(240, 240, 245);
+    --body-bg-color: #ffffff;
+    --body-text-color: #000000;
+    --body-text-color-accent: #1a1a2e;
+    --block-bg-color: #f1f1f4;
+    --border-color: #dcdcdc;
+}
+
+[data-theme="dark"] {
+    --primary-color: rgb(36, 36, 40);
+    --body-bg-color: #121212;
+    --body-text-color: #cdcdcd;
+    --body-text-color-accent: #ffffff;
+    --block-bg-color: #1c1c1c;
+    --border-color: #333333;
+}
 
 body {
     font-family: "Lato", sans-serif;
@@ -33,7 +44,7 @@ body {
     line-height: 1.6;
 }
 
-  
+
 a {
     text-decoration: none;
 }
@@ -59,7 +70,7 @@ h3 {
     font-size: 1.75em;
 }
 
-p {
+p, label {
     font-size: 1em;
 }
 
@@ -80,7 +91,7 @@ a {
         font-size: 1.25em;
     }
 
-    p {
+    p, label {
         font-size: 0.875em;
     }
 

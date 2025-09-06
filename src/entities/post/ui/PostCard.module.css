@@ -1,9 +1,7 @@
 .postCard {
-  padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   background-color: var(--block-background-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: clamp(300px, 100%, 600px);
   color: var(--body-text-color);
 }

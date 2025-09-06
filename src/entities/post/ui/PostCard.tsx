@@ -1,4 +1,6 @@
 import styles from "./PostCard.module.css";
+import { memo } from "react";
+import { type FC } from "react";
 
 interface PostCardProps {
   title: string;
@@ -6,7 +8,7 @@ interface PostCardProps {
   userId: number;
 }
 
-export const PostCard = ({ title, body, userId }: PostCardProps) => {
+export const PostCardComponent: FC<PostCardProps> = (({ title, body, userId }) => {
   return (
     <div className={styles.postCard}>
       <div className={styles.postCardHeader}>
@@ -17,4 +19,6 @@ export const PostCard = ({ title, body, userId }: PostCardProps) => {
       <p className={styles.postCardBody}>{body}</p>
     </div>
   );
-};
+});
+
+export const PostCard = memo(PostCardComponent);

@@ -1,23 +1,23 @@
-import { useState, createContext, useEffect } from "react";
-import type { ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
+import { ThemeContext } from "./ThemeContext";
+import { type FC } from "react";
 
-export const ThemeContext = createContext({
-    isDark: false,
-    toggleDark: () => {},
-  });
+interface ThemeProviderProps {
+  children: ReactNode;
+}
 
-  interface ThemeProviderProps {
-    children: ReactNode
-  } 
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+  const [isDark, setDark] = useState(false);
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-    const [isDark, setDark] = useState(false);
-    useEffect(() => {
-        document.documentElement.setAttribute(
-            "data-theme",
-            isDark ? "dark" : "light"
-          );
-    }, [isDark]);
-    const toggleDark = () => setDark(!isDark);
-    return <ThemeContext.Provider value={{ isDark, toggleDark }}>{children}</ThemeContext.Provider>;
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
+  const toggleDark = () => setDark(!isDark);
+
+  return (
+    <ThemeContext.Provider value={{ isDark, toggleDark }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
