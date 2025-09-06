@@ -1,0 +1,14 @@
+.main {
+    padding: 150px 7% 0 7%;
+    min-height: 100vh;
+    display: flex;
+}
+
+@media screen and (max-width: 1050px) {
+    .main {
+        padding: 100px 10px 0 10px;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+    }
+    
+}

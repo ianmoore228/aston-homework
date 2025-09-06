@@ -1,0 +1,54 @@
+.postCard {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--block-background-color);
+  width: clamp(300px, 100%, 600px);
+  color: var(--body-text-color);
+}
+
+.postCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.postCardBody {
+  line-height: 1.6;
+  padding: 10px 0;
+}
+
+.postCardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: end;
+  padding-left: 30px;
+  color: var(--body-text-color-accent);
+}
+
+.postCardUserId {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 5px;
+  text-wrap: nowrap;
+  color: var(--body-text-color);
+}
+
+@media screen and (max-width: 600px) {
+  .postCard {
+    width: 100%;
+  }
+
+  .postCardHeader {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .postCardTitle {
+    text-align: start;
+    padding-left: 0;
+  }
+
+}

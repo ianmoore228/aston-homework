@@ -1,0 +1,16 @@
+.commentListButton {
+    padding: 10px;
+    background-color: var(--body-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--body-text-color);
+}
+
+.commentListButtonArrow {
+    margin-left: 15px;
+}
+
+.commentListTitle {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
