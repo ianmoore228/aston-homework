@@ -1,7 +1,8 @@
-import { useContext } from 'react';
-import { ThemeContext } from './themeProvider';
+import { useContext } from "react";
+import { ThemeContext } from "./ThemeContext";
 
 export const useTheme = () => {
-    return useContext(ThemeContext);
-  };
-  
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("Конекст должен быть использован внутри провайдера");
+  return context;
+};

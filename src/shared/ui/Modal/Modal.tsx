@@ -1,6 +1,7 @@
 import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
 import styles from "./Modal.module.css";
+import { type FC } from "react";
 
 interface ModalProps {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-export const Modal = ({ children, isOpen, onClose }: ModalProps) => {
+export const Modal: FC<ModalProps> = ({ children, isOpen, onClose }) => {
   if (!isOpen) {
     document.body.style.overflow = "unset";
     return null;

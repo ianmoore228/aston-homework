@@ -1,8 +1,6 @@
-import { MainLayout } from "./shared/layouts/mainLayout/MainLayout";
-import { PostList } from "./widgets/PostList/PostList";
+import type { Post } from "@/entities/post";
 
-export const App = () => {
-  const posts = [
+export const posts: Post[] = [
     {
       "userId": 1,
       "id": 1,
@@ -33,11 +31,4 @@ export const App = () => {
       "title": "nesciunt quas odio",
       "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
     },
-  ];      
-
-  return (
-    <MainLayout>
-      <PostList posts={posts} />
-    </MainLayout>
-  );
-};
+  ];  

@@ -1,12 +1,22 @@
 import styles from "./header.module.css";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
-import { AboutModalButton } from "@/features/About";
+import { AboutModal } from "@/features/About";
+import { type FC } from "react";
+import { useState } from "react";
+import { Button } from "@/shared/ui/Button";
 
-export const Header = () => {
+export const Header: FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleOpen() {
+    setIsOpen(true);
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        <AboutModalButton/>
+        <Button onClick={handleOpen}>О проекте</Button>
+        <AboutModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         <h2 className={styles.headerTitle}>HEADER</h2>
         <ThemeSwitcher />
       </div>

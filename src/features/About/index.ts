@@ -1,1 +1,1 @@
-export { AboutModalButton } from "./ui/AboutModal";
+export { AboutModal } from "./ui/AboutModal";
