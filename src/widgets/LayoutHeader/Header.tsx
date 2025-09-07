@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
-import { AboutModal } from "@/features/About";
+import { AboutModal } from "@/features/AboutModal";
 import { type FC } from "react";
 import { useState } from "react";
 import { Button } from "@/shared/ui/Button";
