@@ -1,19 +1,13 @@
 import { PostCard } from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
-
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import type { FC } from "react";
+import { type Post } from "../../entities/post";
 
 interface PostListProps {
   posts: Post[];
 }
 
-export const PostList = ({ posts }: PostListProps) => {
+export const PostList: FC<PostListProps> = ({ posts }) => {
   return (
     <section className={styles.postList}>
       {posts.map(post => (
