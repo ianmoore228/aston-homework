@@ -1,13 +1,31 @@
-# Домашняя работа №2
+# Домашняя работа №3
+
+Необходимо реализовать отображение модального окна с использованием compound components, добавить фильтрацию постов по длине заголовка, свертывание комментариев и оптимизации через HOC и хуки.
 
 Задание:
 
-1. Реализовать ThemeContext и переключение темы:
-   - ThemeProvider, useTheme → src/shared/lib/theme/
-   - ThemeSwitcher → src/features/ThemeSwitcher/ui/
+1. Compound Components:
 
-2. Использовать React.Fragment и key в списках.
+   - Modal с подкомпонентами (Header, Body, Footer) → src/shared/ui/Modal/
 
-3. Модалка "О проекте" через React.Portal → src/shared/ui/Modal/
+2. HOC withLoading:
 
-4. Кнопки с обработкой событий → src/shared/ui/Button/
+   - HOC → src/shared/lib/hoc/
+
+   - Применяется к PostList
+
+3. Свертывание/разворачивание комментариев:
+
+  - CommentList.tsx → src/widgets/CommentList/ui/
+
+  - Используй useState, useCallback
+
+4. Фильтр по длине заголовка:
+
+  - PostLengthFilter → src/features/PostLengthFilter/ui/
+
+  - filterByLength.ts → src/features/PostLengthFilter/lib/
+
+5. Оптимизации:
+
+   - useMemo, useCallback в PostList
