@@ -1,24 +1,15 @@
 import { Modal } from "@/shared/ui/Modal";
-import { useState, useCallback } from "react";
-import { Button } from "@/shared/ui/Button";
 import styles from "./AboutModal.module.css";
 import { type FC } from "react";
 
-export const AboutModal: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface AboutModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-  const handleClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const handleOpen = () => {
-    setIsOpen(true);
-  }
-
+export const AboutModal: FC<AboutModalProps> = ({ isOpen, onClose }) => {
   return (
-    <>
-      <Button type="button" onClick={handleOpen}>О проекте</Button>
-      <Modal.Root isOpen={isOpen} onClose={handleClose}>
+    <Modal.Root isOpen={isOpen} onClose={onClose}>
         <Modal.Header>
           <h2>О проекте</h2>
         </Modal.Header>
@@ -34,6 +25,5 @@ export const AboutModal: FC = () => {
           </p>
         </Modal.Body>
       </Modal.Root>
-    </>
   );
 };
