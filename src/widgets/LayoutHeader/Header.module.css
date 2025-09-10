@@ -18,5 +18,16 @@
     text-align: center;
     padding: 20px 0;
     color:var(--body-text-color);
-   
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 650px) {
+    .headerContainer {
+        padding: 0 10px;
+    }
 }

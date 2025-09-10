@@ -10,13 +10,14 @@ export interface PostListProps {
 }
 
 export const PostList: FC<PostListProps> = ({ posts }) => {
+
     return (
       <section className={styles.postList}>
         {posts.length > 0 ? (
           posts.map((post) => (
             <div className={styles.postListContent} key={post.id}>
               <PostCard
-                key={post.id}
+                id={post.id}
                 userId={post.userId}
                 title={post.title}
                 body={post.body}
@@ -25,7 +26,7 @@ export const PostList: FC<PostListProps> = ({ posts }) => {
             </div>
           ))
         ) : (
-          <h3>Нету постов</h3>
+          <h3>Нет постов</h3>
         )}
       </section>
     );

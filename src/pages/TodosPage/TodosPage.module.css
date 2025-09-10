@@ -1,0 +1,6 @@
+.todosPage {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    justify-content: flex-end;
+}

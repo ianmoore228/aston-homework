@@ -25,6 +25,13 @@
   text-align: end;
   padding-left: 30px;
   color: var(--body-text-color-accent);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.postCardTitleDisabled {
+  cursor: default;
+  text-decoration: none;
 }
 
 .postCardUserId {

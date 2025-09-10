@@ -9,25 +9,35 @@ import { type FC } from "react";
 
 interface PostLengthFilterProps {
   posts: Post[];
+  userId?: number;
   onFilter: (filtered: Post[]) => void;
 }
 
 export const PostLengthFilter: FC<PostLengthFilterProps> = ({
   posts,
+  userId,
   onFilter,
 }) => {
   const [min, setMin] = useState("0");
   const [max, setMax] = useState("200");
   const [error, setError] = useState("");
 
+  console.log(userId);
+
   function handleFilter() {
-    const filtered = filterByLength(posts, Number(min), Number(max));
+    let filtered: Post[] = posts;
+    if (userId) {
+       filtered = filterByLength(posts, Number(min), Number(max), userId);
+    } else {
+       filtered = filterByLength(posts, Number(min), Number(max));
+    }
+   
     onFilter(filtered);
   }
 
   const handleSetNumber = useCallback((value: string, type: "min" | "max") => {
     let numbers = value.replace(/\D/g, "");
-    numbers = numbers.replace(/^0+/, "");
+    numbers = numbers.replace(/^0+/, "") || "0";
     if (!numbers) {
       setError("Поле не может быть пустым");
     } else if (

@@ -11,5 +11,5 @@ interface ButtonProps {
 };
 
 export const Button: FC<ButtonProps> = ({ children, disabled, ...rest }) => {
-  return <motion.button  whileHover={disabled ? { scale: 1 } : { scale: 1.1 }} className={`${styles.button} ${disabled ? styles.buttonDisabled : ""}`} {...rest}>{children}</motion.button>;
+  return <motion.button  whileHover={disabled ? { scale: 1 } : { scale: 1.07 }} className={`${styles.button} ${disabled ? styles.buttonDisabled : ""}`} {...rest}>{children}</motion.button>;
 };

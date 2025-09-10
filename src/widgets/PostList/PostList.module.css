@@ -13,6 +13,9 @@
     flex-direction: column;
     align-items: center;
     border: var(--border-color) solid 1px;
+}
+
+.postListContent:not(:first-child) {
     margin: 15px 0;
 }
 

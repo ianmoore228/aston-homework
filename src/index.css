@@ -17,6 +17,7 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+
 [data-theme="light"] {
     --primary-color: rgb(240, 240, 245);
     --body-bg-color: #ffffff;
@@ -33,6 +34,19 @@ input[type="number"] {
     --body-text-color-accent: #ffffff;
     --block-bg-color: #1c1c1c;
     --border-color: #333333;
+}
+
+select {
+    background-color: var(--block-bg-color);
+    color: var(--body-text-color);
+    padding: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: 300;
+    display: inline-block;
+    border: var(--border-color) solid 1px;
+    border-radius: 10px;
+    min-width: 80px;
 }
 
 body {
