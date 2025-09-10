@@ -2,7 +2,7 @@ import type { FC } from "react";
 import styles from "./PhotoList.module.css"
 import type { Photo } from "@/entities/photo";
 import { useParams } from "react-router-dom";
-import { PhotoCard } from "@/entities/photo/ui/PhotoCard";
+import { PhotoCard } from "@/entities/photo";
 
 interface PhotoListProps {
     photos: Photo[]

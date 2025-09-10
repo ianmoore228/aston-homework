@@ -7,7 +7,7 @@ type PhotoCardProps = {
     url: string;
 }
 
-export const PhotoCard: FC<PhotoCardProps> = ({ albumId, title, url }) => {
+export const PhotoCard: FC<PhotoCardProps> = ({ title, url }) => {
     return (
         <div className={styles.photoCard}>
             <div className={styles.photoContainer}>
