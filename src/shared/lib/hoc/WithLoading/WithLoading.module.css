@@ -1,0 +1,14 @@
+.postListContent {
+    color: var(--body-text-color);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    width: clamp(300px, 100%, 600px);
+    margin: 15px 0;
+}
+
+.postListLoading {
+    /* margin: 5% 0; */
+    width: clamp(50px, 100%, 100px);
+}

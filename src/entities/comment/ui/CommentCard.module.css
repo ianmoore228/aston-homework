@@ -1,0 +1,21 @@
+.commentCard {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--block-bg-color);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    /* width: clamp(300px, 100%, 600px); */
+    color: var(--body-text-color);
+    width: 100%;
+}
+
+.commentCardName, .commentCardEmail {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--body-text-color-accent);
+    font-size: 0.75rem;
+}
+
+.commentCardLine {
+    margin: 10px 0;
+}

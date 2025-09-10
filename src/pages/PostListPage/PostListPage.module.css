@@ -1,0 +1,24 @@
+.postListPage {
+  display: flex;
+  width: 100%;
+  margin-bottom: 100px;
+}
+ 
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: flex-start;
+  margin-left: 5%;
+} 
+
+@media screen and (max-width: 650px) {
+  .postListPage {
+    flex-direction: column-reverse;
+  }
+  
+  .filters {
+    width: 100%;
+    margin-left: 0;
+  }
+}

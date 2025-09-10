@@ -1,0 +1,7 @@
+.photoList {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: clamp(300px, 100%, 600px);
+}

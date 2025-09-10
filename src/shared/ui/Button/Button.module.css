@@ -1,0 +1,18 @@
+.button {
+    background-color: var(--primary-color);
+    color: var(--body-text-color);
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: 300;
+    display: inline-block;
+    border: var(--border-color) solid 1px;
+    border-radius: 10px;
+}
+
+.buttonDisabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

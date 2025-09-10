@@ -1,10 +1,11 @@
-import "./footer.css";
+import styles from "./Footer.module.css";
+import { type FC } from "react";
 
-export const Footer = () => {
+export const Footer: FC = () => {
   return (
-    <footer className="footer">
-      <div className="footer__container">
-        <h1 className="footer__title">FOOTER</h1>
+    <footer>
+      <div className={styles.footerContainer}>
+        <h1 className={styles.footerTitle}>FOOTER</h1>
       </div>
     </footer>
   );
