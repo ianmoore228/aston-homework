@@ -1,31 +1,17 @@
-# Домашняя работа №3
+# Домашняя работа №4
 
-Необходимо реализовать отображение модального окна с использованием compound components, добавить фильтрацию постов по длине заголовка, свертывание комментариев и оптимизации через HOC и хуки.
+Необходимо добавить маршруты для страниц с постами, комментариями, альбомами, фото и задачами пользователей. Реализовать навигацию и кастомный хук для получения постов.
 
 Задание:
 
-1. Compound Components:
+1. Настроить маршруты:
 
-   - Modal с подкомпонентами (Header, Body, Footer) → src/shared/ui/Modal/
+   - /posts, /posts/:id, /users/:id/albums, /albums/:id/photos, /users/:id/todos, /users/:id/posts
 
-2. HOC withLoading:
+   - Роуты → src/pages/
 
-   - HOC → src/shared/lib/hoc/
+   - Роутинг → src/app/providers/router/
 
-   - Применяется к PostList
+2. Навигация через NavLink → UserTabs → src/widgets/UserTabs/
 
-3. Свертывание/разворачивание комментариев:
-
-  - CommentList.tsx → src/widgets/CommentList/ui/
-
-  - Используй useState, useCallback
-
-4. Фильтр по длине заголовка:
-
-  - PostLengthFilter → src/features/PostLengthFilter/ui/
-
-  - filterByLength.ts → src/features/PostLengthFilter/lib/
-
-5. Оптимизации:
-
-   - useMemo, useCallback в PostList
+3. Хук usePosts → src/features/PostList/model/hooks/
