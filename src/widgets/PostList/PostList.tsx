@@ -1,23 +1,32 @@
-import { PostCard } from "../../entities/post/ui/PostCard";
-import "./PostList.css";
+import { PostCard } from "@/entities/post";
+import styles from "./PostList.module.css";
+import type { Post } from "@/entities/post";
+import { CommentList } from "../CommentList/CommentList";
+import { comments } from "@/shared/mocks/comments";
+import { type FC } from "react";
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-interface PostListProps {
+export interface PostListProps {
   posts: Post[];
 }
 
-export const PostList = ({ posts }: PostListProps) => {
-  return (
-    <section className="post-list">
-      {posts.map(post => (
-        <PostCard key={post.id} userId={post.userId} title={post.title} body={post.body} />
-      ))}
-    </section>
-  );
-};
+export const PostList: FC<PostListProps> = ({ posts }) => {
+    return (
+      <section className={styles.postList}>
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div className={styles.postListContent} key={post.id}>
+              <PostCard
+                key={post.id}
+                userId={post.userId}
+                title={post.title}
+                body={post.body}
+              />
+              <CommentList postId={post.id} comments={comments} />
+            </div>
+          ))
+        ) : (
+          <h3>Нету постов</h3>
+        )}
+      </section>
+    );
+  }; 

@@ -1,0 +1,22 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.187);
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    align-items: center;
+    padding: 0 7%;
+}
+
+.headerTitle {
+    text-align: center;
+    padding: 20px 0;
+    color:var(--body-text-color);
+   
+}
