@@ -1,17 +1,17 @@
-# Домашняя работа №4
+# Домашняя работа №5
 
-Необходимо добавить маршруты для страниц с постами, комментариями, альбомами, фото и задачами пользователей. Реализовать навигацию и кастомный хук для получения постов.
+Необходимо настроить глобальное состояние приложения с использованием Redux Toolkit и подключить работу с API через RTK Query. Реализовать получение данных и кэширование.
 
 Задание:
 
-1. Настроить маршруты:
+1. Redux Toolkit Store → src/app/providers/store/
 
-   - /posts, /posts/:id, /users/:id/albums, /albums/:id/photos, /users/:id/todos, /users/:id/posts
+2. RTK Query API:
 
-   - Роуты → src/pages/
+   - postsApi, commentsApi, albumsApi, todosApi → src/entities/[entity]/api/
 
-   - Роутинг → src/app/providers/router/
+3. createEntityAdapter:
 
-2. Навигация через NavLink → UserTabs → src/widgets/UserTabs/
+   - postSlice, userSlice → src/entities/[entity]/model/slice/
 
-3. Хук usePosts → src/features/PostList/model/hooks/
+4. Инвалидация, кэширование, загрузка по userId и postId
