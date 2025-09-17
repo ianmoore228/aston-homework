@@ -4,7 +4,7 @@ import type { FC } from "react";
 // import { posts } from "@/shared/mocks/posts";
 import { useParams } from "react-router-dom";
 import { CommentList } from "@/widgets/CommentList";
-import { useGetAllPostsQuery } from "@/entities/post/api/postsApi";
+import { useGetPostByIdQuery } from "@/entities/post";
 import { withLoading } from "@/shared/lib/hoc/withLoading";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 
@@ -13,10 +13,9 @@ export const PostPage: FC = () => {
 
 const PostCardWithLoading = withLoading(PostCard);
 
-  const { data: posts, isFetching, error } = useGetAllPostsQuery();
   const { id } = useParams();
 
-  const post = posts?.find((post) => post.id === Number(id));
+  const { data: post, isFetching, error } = useGetPostByIdQuery(Number(id));
 
   if (!post) {
     return <h2>Неправильный ID или пост не найден........</h2>;
