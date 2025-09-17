@@ -10,7 +10,7 @@ interface PhotoListProps {
 
 export const PhotoList: FC<PhotoListProps> = ({photos}) => {
 
-    const { id: albumId } = useParams();
+    const { albumId } = useParams();
 
     const filteredPhotos = photos.filter((photo) => photo.albumId === Number(albumId));
 

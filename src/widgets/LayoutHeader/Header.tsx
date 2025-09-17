@@ -2,7 +2,7 @@ import styles from "./header.module.css";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { AboutModal } from "@/features/AboutModal";
 import { type FC } from "react";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Button } from "@/shared/ui/Button";
 import { UserTabs } from "@/widgets/UserTabs";
 
@@ -13,9 +13,9 @@ export const Header: FC = () => {
     setIsOpen(true);
   }
 
-  const handleClose = useCallback(() => {
+  function handleClose() {
     setIsOpen(false);
-  }, []);
+  };
 
   return (
     <header className={styles.header}>

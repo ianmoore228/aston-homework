@@ -1,23 +1,22 @@
-import { type PostListProps } from "@/widgets/PostList";
-import React from "react";
+import { type ComponentType, type FC } from "react";
 import loading from "@/assets/images/loading.svg";
-import styles from "./WithLoading.module.css";
-import { type FC } from "react";
+import styles from "./withLoading.module.css";
 
-type WithLoadingProps = PostListProps & {
-  isLoading: boolean;
+type WithLoadingProps = {
+  isFetching: boolean;
 };
 
-export function WithLoading(PostList: React.ComponentType<PostListProps>) {
-  const WithLoadingComponent: FC<WithLoadingProps> = ({ isLoading, ...props }) => {
-    if (isLoading) {
+export function withLoading<T extends object>(WrappedComponent: ComponentType<T>) {
+  const WithLoadingComponent: FC<T & WithLoadingProps> = ({ isFetching, ...props }) => {
+    if (isFetching) {
       return (
-        <div className={styles.postListContent}>
-          <img className={styles.postListLoading} src={loading} />
+        <div className={styles.loadingContainer}>
+          <img className={styles.loadingImage} src={loading} alt="loading" />
         </div>
       );
     }
-    return <PostList {...props} />;
+
+    return <WrappedComponent {...(props as T)} />;
   };
 
   return WithLoadingComponent;

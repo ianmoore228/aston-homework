@@ -1,0 +1,1 @@
+export { usePosts } from './model/hooks/usePosts';

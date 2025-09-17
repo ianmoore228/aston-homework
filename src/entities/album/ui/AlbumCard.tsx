@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 interface AlbumCardProps {
   title: string;
-  id: number;
-  userId: number;
+  albumId: number;
 }
 
-export const AlbumCard: FC<AlbumCardProps> = ({ title, userId }) => {
-  const { id } = useParams();
+export const AlbumCard: FC<AlbumCardProps> = ({ title, albumId }) => {
+  const { userId } = useParams();
+
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-   navigate(`/albums/${id}/photos`);
+   navigate(`/users/${userId}/albums/${albumId}/photos`);
   };
 
   return (

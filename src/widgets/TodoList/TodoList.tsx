@@ -10,12 +10,12 @@ interface TodoListProps {
 
 export const TodoList: FC<TodoListProps> = ({todos}) => {
 
-    const { id: userId } = useParams();
+    const { userId: userId } = useParams();
 
     const filteredTodos = todos.filter((todo) => todo.userId === Number(userId));
 
     return (
-        <section className={styles.photoList}>
+        <section className={styles.todoList}>
             {filteredTodos.map((todo) => (
                 <TodoCard key={todo.id} title={todo.title} isCompleted={todo.completed} />
             ))}

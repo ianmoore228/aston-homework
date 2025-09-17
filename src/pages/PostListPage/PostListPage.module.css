@@ -1,7 +1,12 @@
 .postListPage {
   display: flex;
   width: 100%;
-  margin-bottom: 100px;
+}
+
+.postListPageContentTop {
+  display: flex;
+  /* flex-direction: column;
+  width: 70%; */
 }
  
 .filters {
@@ -15,6 +20,11 @@
 @media screen and (max-width: 650px) {
   .postListPage {
     flex-direction: column-reverse;
+  }
+
+  .postListPageContentTop {
+    flex-direction: column-reverse;
+    width: 100%;
   }
   
   .filters {

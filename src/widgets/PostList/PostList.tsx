@@ -1,8 +1,7 @@
 import { PostCard } from "@/entities/post";
 import styles from "./PostList.module.css";
 import type { Post } from "@/entities/post";
-import { CommentList } from "../CommentList/CommentList";
-import { comments } from "@/shared/mocks/comments";
+import { CommentList } from "../CommentList";
 import { type FC } from "react";
 
 export interface PostListProps {
@@ -22,7 +21,7 @@ export const PostList: FC<PostListProps> = ({ posts }) => {
                 title={post.title}
                 body={post.body}
               />
-              <CommentList postId={post.id} comments={comments} />
+              <CommentList postId={post.id} />
             </div>
           ))
         ) : (

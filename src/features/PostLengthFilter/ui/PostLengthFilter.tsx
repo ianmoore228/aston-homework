@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import type { Post } from "@/entities/post";
 import { filterByLength } from "../index.ts";
 import React from "react";
@@ -11,18 +11,20 @@ interface PostLengthFilterProps {
   posts: Post[];
   userId?: number;
   onFilter: (filtered: Post[]) => void;
+  isLoading?: boolean;
 }
 
 export const PostLengthFilter: FC<PostLengthFilterProps> = ({
   posts,
   userId,
   onFilter,
+  isLoading
 }) => {
   const [min, setMin] = useState("0");
   const [max, setMax] = useState("200");
   const [error, setError] = useState("");
 
-  console.log(userId);
+  console.log(userId + " userId");
 
   function handleFilter() {
     let filtered: Post[] = posts;
@@ -35,7 +37,7 @@ export const PostLengthFilter: FC<PostLengthFilterProps> = ({
     onFilter(filtered);
   }
 
-  const handleSetNumber = useCallback((value: string, type: "min" | "max") => {
+  const handleSetNumber = (value: string, type: "min" | "max") => {
     let numbers = value.replace(/\D/g, "");
     numbers = numbers.replace(/^0+/, "") || "0";
     if (!numbers) {
@@ -57,18 +59,21 @@ export const PostLengthFilter: FC<PostLengthFilterProps> = ({
     } else if (type === "max") {
       setMax(numbers);
     }
-  }, [min, max]);
+  };
 
-  const handleSetMin = useCallback(
+  const handleSetMin = 
     (e: React.ChangeEvent<HTMLInputElement>) => {
     handleSetNumber(e.target.value, "min");
-  },
-   [handleSetNumber]
-  );
+  };
   
-  const handleSetMax = useCallback((e: React.ChangeEvent<HTMLInputElement>) =>{
+  const handleSetMax = (e: React.ChangeEvent<HTMLInputElement>) =>{
     handleSetNumber(e.target.value, "max");
-  }, [handleSetNumber]);
+  };
+
+  if (isLoading) {
+    return null;
+  }
+  // console.log( )
 
 
   return (

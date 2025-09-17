@@ -8,5 +8,11 @@
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 0px 5px rgba(0, 0, 0, 0.128);
- 
+     width: 430px;
+}
+
+@media screen and (max-width: 650px) {
+    .albumCard {
+        width: 100%;
+    }
 }

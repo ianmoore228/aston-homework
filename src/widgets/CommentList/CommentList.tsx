@@ -1,35 +1,38 @@
-import styles from "./CommentList.module.css";
-import { CommentCard } from "@/entities/comment/ui/CommentCard";
-import type { Comment } from "@/entities/comment";
-import arrowBlack from "@/assets/images/arrow-black.svg"
-import arrowWhite from "@/assets/images/arrow-white.svg"
-import { useTheme } from "@/shared/lib/theme";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { type FC } from "react";
+import styles from "./CommentList.module.css";
+import { CommentCard } from "@/entities/comment";
+import type { Comment } from "@/entities/comment";
+import arrowBlack from "@/assets/images/arrow-black.svg";
+import arrowWhite from "@/assets/images/arrow-white.svg";
+import { useTheme } from "@/shared/lib/theme";
+import { useGetCommentByPostIdQuery } from "@/entities/comment";
 
 export type CommentListProps = {
-  comments: Comment[];
   postId: number;
 };
 
-export const CommentList: FC<CommentListProps> = ({ comments, postId }) => {
+export const CommentList: FC<CommentListProps> = ({ postId }) => {
   const [isUnfolded, setIsUnfolded] = useState(false);
   const { isDark } = useTheme();
 
-  const commentsById = useMemo(() => (comments.filter((comment) => comment.postId === postId)), [comments, postId]);
+  const { data: comments, isFetching } = useGetCommentByPostIdQuery(postId, {
+    skip: !isUnfolded,
+  });
 
-  const visibleComments =
-    commentsById.length <= 3 || isUnfolded
-      ? commentsById
-      : commentsById.slice(0, 3);
+  const toggleComments = () => {
+    setIsUnfolded((prev) => !prev);
+  };
 
-      const toggleComments = useCallback(() => {
-        setIsUnfolded((prev) => !prev);
-      }, []);
+  const commentsById = useMemo(
+    () => comments ?? [],
+    [comments]
+  );
+
+  const visibleComments = isUnfolded ? commentsById : [];
 
   return (
     <div className={styles.commentList}>
-      <p className={styles.commentListTitle}>Комментарии:</p>
       {visibleComments.map((comment: Comment) => (
         <CommentCard
           postId={postId}
@@ -39,12 +42,15 @@ export const CommentList: FC<CommentListProps> = ({ comments, postId }) => {
           body={comment.body}
         />
       ))}
-      {commentsById.length > 3 && (
-        <button className={styles.commentListButton} onClick={toggleComments}>
-          {isUnfolded ? "Свернуть" : "Развернуть"}
-          <img className={styles.commentListButtonArrow} style={{transform: isUnfolded ? "rotate(180deg)" : "unset"}} src={isDark ? arrowWhite : arrowBlack}/>
-        </button>
-      )}
+      <button className={styles.commentListButton} onClick={toggleComments}>
+        {isUnfolded ? "Свернуть" : "Развернуть комментарии"}
+        <img
+          className={styles.commentListButtonArrow}
+          style={{ transform: isUnfolded ? "rotate(180deg)" : "unset" }}
+          src={isDark ? arrowWhite : arrowBlack}
+        />
+      </button>
+      {isFetching && <div className={styles.commentListLoading}></div>}
     </div>
   );
 };

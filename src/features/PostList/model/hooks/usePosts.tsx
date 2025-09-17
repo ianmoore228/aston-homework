@@ -1,38 +1,53 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "@/app/providers/store";
+import { useGetAllPostsQuery } from "@/entities/post";
+import { setFilteredPosts } from "@/entities/post";
+import { setSelectedUserId } from "@/entities/user";
+import type { Post } from "@/entities/post";
 import { useParams } from "react-router-dom";
-import { posts as mockPosts } from "@/shared/mocks/posts";
 
 export function usePosts() {
-  const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
-  const [allPosts] = useState(mockPosts);
-  const [filteredPosts, setFilteredPosts] = useState(mockPosts);
+  const dispatch = useDispatch<AppDispatch>();
 
-  // имитация загрузки
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+  const { userId } = useParams();
 
-    return () => clearTimeout(timer);
-  }, [id]);
+  const selectedUserId = useSelector(
+    (state: RootState) => state.users.selectedUserId
+  );
 
+  const { data, isFetching, error } = useGetAllPostsQuery();
+
+  const filteredPosts = useSelector((state: RootState) => state.posts.filtered);
 
   useEffect(() => {
-    if (id) {
-      setFilteredPosts(allPosts.filter((p) => p.userId === Number(id)));
-    } else {
-      setFilteredPosts(allPosts);
+    if (userId && Number(userId) !== selectedUserId) {
+      dispatch(setSelectedUserId(Number(userId)));
     }
-  }, [id]);
+  }, []);
 
+  useEffect(() => {
+    if (!data) return;
 
-  const posts = filteredPosts;
+    const userId = selectedUserId || 1;
+    if (userId) {
+      dispatch(setFilteredPosts(data.filter((p) => p.userId === userId)));
+    } else {
+      dispatch(setFilteredPosts(data));
+    }
+  }, [data, selectedUserId, dispatch]);
+
+  const onSelectUser = (id: number) => {
+    dispatch(setSelectedUserId(id));
+  };
 
   return {
-    posts,
-    isLoading,
-    setFilteredPosts, 
+    posts: filteredPosts,
+    isFetching,
+    error,
+    setFilteredPosts: (posts: Post[]) =>
+      dispatch(setFilteredPosts(posts)),
+    onSelectUser,
+    selectedUserId,
   };
 }

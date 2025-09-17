@@ -1,5 +1,5 @@
 import type { Album } from "@/entities/album";
-import { AlbumCard } from "@/entities/album/ui/AlbumCard";
+import { AlbumCard } from "@/entities/album";
 import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./AlbumList.module.css";
@@ -9,14 +9,14 @@ interface AlbumListProps {
 }
 
 export const AlbumList: FC<AlbumListProps> = ({ albums }) => {
-    const { id } = useParams();
+    const { userId } = useParams();
 
-    const filteredAlbums = albums.filter((album) => album.userId === Number(id));
+    const filteredAlbums = albums.filter((album) => album.userId === Number(userId));
 
     return (
         <section className={styles.albumList}>
             {filteredAlbums.map((album) => (
-                <AlbumCard key={album.id} title={album.title} id={album.id} userId={album.userId} />
+                <AlbumCard key={album.id} title={album.title} albumId={album.id} />
             ))}
         </section>
     );
