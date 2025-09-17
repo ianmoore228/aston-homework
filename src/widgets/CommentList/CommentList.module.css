@@ -1,0 +1,47 @@
+.commentListButton {
+    padding: 10px;
+    background-color: var(--body-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--body-text-color);
+    width: fit-content;
+}
+
+.commentList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.commentListButtonArrow {
+    margin-left: 15px;
+}
+
+.commentListTitle {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.commentListLoading {
+    margin-top: 15px;
+    width: 100%;
+    height: 40px; 
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }

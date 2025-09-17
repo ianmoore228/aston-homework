@@ -1,0 +1,17 @@
+.selectAlbum {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: fit-content;
+  }
+  
+  .selectAlbumTitle {
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 1050px) {
+    .selectAlbum {
+      margin: 0 0 20px 0;
+    }
+  }

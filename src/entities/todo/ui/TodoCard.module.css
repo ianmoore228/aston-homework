@@ -1,0 +1,12 @@
+.todoCard {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: var(--block-bg-color);
+    width: clamp(300px, 100%, 600px);
+    color: var(--body-text-color);
+    padding: 15px;
+}
+
+.todoTitle {
+    margin-left: 15px;
+}

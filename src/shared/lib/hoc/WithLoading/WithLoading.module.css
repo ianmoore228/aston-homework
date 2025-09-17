@@ -1,0 +1,20 @@
+.loadingContainer {
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    width: 100%;       
+    max-width: 260px;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.loadingImage {
+    width: clamp(50px, 100%, 100px);
+}
+
+@media screen and (max-width: 650px) {
+    .loadingContainer {
+        max-width: 100%;
+    }
+}

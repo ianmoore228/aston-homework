@@ -1,0 +1,8 @@
+.photosPage {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 600px;
+    gap: 20px;
+    justify-content: flex-end;
+    width: 100%;
+}
