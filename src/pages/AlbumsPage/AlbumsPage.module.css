@@ -1,0 +1,29 @@
+.albumsPage {
+    display: flex;
+    width: 100%;
+    gap: 5%;
+  }
+  
+  .albumsPageContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+  }
+  
+  @media screen and (max-width: 650px) {
+    
+    .albumsPageContainer {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+  
+  
+  @media screen and (max-width: 820px) {
+  
+    .albumsPage {
+      display: flex;
+      flex-direction: column;
+    }
+  }

@@ -1,33 +1,34 @@
-// createPortal - функция, которая позволяет рендерить компоненты в другом DOM элементе
 import { createPortal } from "react-dom";
-import { type ReactNode, createContext, useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import styles from "./Modal.module.css";
-// Оборачивает компонент, чтобы он перерендеривался если пропсы не изменились
-import { memo } from "react";
 import { motion } from "framer-motion";
 import { type FC } from "react";
+import { ModalContext } from "./ModalContext";
+import { Header } from "./Header";
+import { Body } from "./Body";
+import { Footer } from "./Footer";
 
-
-interface ModalProps {
+export interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
 }
 
-// Контекст и дефолтные значения пропсов
-const ModalContext = createContext<ModalProps>({
-  isOpen: false,
-  onClose: () => {},
-  children: null,
-});
+export interface ModalComponent extends FC<ModalProps> {
+  Header: typeof Header;
+  Body: typeof Body;
+  Footer: typeof Footer;
+}
 
-const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
+const ModalRoot: FC<ModalProps> = ({ isOpen, onClose, children }) => {
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  const handleClose = () => onClose();
 
   if (!isOpen) return null;
 
@@ -38,7 +39,7 @@ const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
            initial={{ y: -30 }}
            animate={{ y: 0 }}
         className={styles.modalContent}>
-          <button className={styles.modalCloseButton} onClick={onClose}>
+          <button className={styles.modalCloseButton} onClick={handleClose}>
             x
           </button>
           {children}
@@ -46,26 +47,13 @@ const Modal: FC<ModalProps> = memo(({ isOpen, onClose, children }) => {
       </div>
     </ModalContext.Provider>,
     document.body
-  );
-});
-
-// Составной компонент
-const Header = ({ children }: { children: ReactNode }) => {
-  return <>{children}</>;
+  )
 };
 
-const Body = ({ children }: { children: ReactNode }) => {
-  return <>{children}</>;
-};
+const Modal = ModalRoot as ModalComponent;
 
-const Footer = ({ children }: { children: ReactNode }) => {
-  return <>{children}</>;
-};
+Modal.Header = Header;
+Modal.Body = Body;
+Modal.Footer = Footer;
 
-// Экспорт объекта с составными компонентами
-export default {
-  Root: Modal,
-  Header: Header,
-  Body: Body,
-  Footer: Footer,
-};
+export { Modal };

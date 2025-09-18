@@ -9,7 +9,7 @@ interface AboutModalProps {
 
 export const AboutModal: FC<AboutModalProps> = ({ isOpen, onClose }) => {
   return (
-    <Modal.Root isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
         <Modal.Header>
           <h2>О проекте</h2>
         </Modal.Header>
@@ -24,6 +24,6 @@ export const AboutModal: FC<AboutModalProps> = ({ isOpen, onClose }) => {
             — на проблемы, которые решает проект.
           </p>
         </Modal.Body>
-      </Modal.Root>
+      </Modal>
   );
 };

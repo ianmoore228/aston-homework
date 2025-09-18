@@ -1,1 +1,1 @@
-export { WithLoading } from "./WithLoading";
+export { withLoading } from "./WithLoading";

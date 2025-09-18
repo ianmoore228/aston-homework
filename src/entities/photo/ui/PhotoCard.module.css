@@ -1,6 +1,7 @@
 .photoContainer {
     width: 200px;
     height: 150px;
+    min-width: 200px;
 }
 
 .photoCard {
@@ -17,4 +18,19 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.photoCardTitle {
+    text-align: right;
+}
+
+@media screen and (max-width: 650px) {
+    .photoContainer {
+        width: 150px;
+    }
+
+    .photo {
+        width: 150px;
+    }
+
 }
