@@ -1,1 +1,1 @@
-export { withLoading } from "./withLoading";
+export { withLoading } from "@/shared/lib/hoc/WithLoading/WithLoading";
