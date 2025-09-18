@@ -4,6 +4,13 @@
     border-bottom: 1px solid var(--border-color);
     font-weight: 600;
     color: var(--body-text-color);
+    width: fit-content;
+}
+
+.commentList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .commentListButtonArrow {

@@ -1,6 +1,6 @@
 import { MainLayout } from "../shared/layouts/mainLayout/MainLayout";
 import { PostList } from "../widgets/PostList/PostList";
-import { WithLoading } from "../shared/lib/hoc/WithLoading";
+import { withLoading } from "../shared/lib/hoc/WithLoading";
 import { posts } from "../shared/mocks/posts";
 import { useEffect, useState } from "react";
 import { PostLengthFilter } from "../features/PostLengthFilter";
@@ -10,7 +10,7 @@ export const App: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filteredPosts, setFilteredPosts] = useState(posts);
 
-  const PostWithLoading = WithLoading(PostList);
+  const PostWithLoading = withLoading(PostList);
 
   // Имитация загрузки 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const App: FC = () => {
 
   return (
     <MainLayout>
-      <PostWithLoading posts={filteredPosts} isLoading={isLoading} />
+      <PostWithLoading posts={filteredPosts} isFetching={isLoading} />
       <PostLengthFilter posts={posts} onFilter={setFilteredPosts} />
     </MainLayout>
   );
