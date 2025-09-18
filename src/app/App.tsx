@@ -1,4 +1,4 @@
-import { MainLayout } from "../shared/layouts/mainLayout/MainLayout";
+import { MainLayout } from "../shared/layouts/mainLayout";
 import { PostList } from "../widgets/PostList/PostList";
 import { withLoading } from "../shared/lib/hoc/WithLoading";
 import { posts } from "../shared/mocks/posts";
