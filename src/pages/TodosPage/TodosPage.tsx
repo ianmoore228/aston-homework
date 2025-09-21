@@ -2,7 +2,7 @@ import styles from "./TodosPage.module.css";
 import { type FC } from "react";
 import { TodoList } from "@/widgets/TodoList/TodoList";
 import { SelectUser } from "@/features/SelectUser";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { useGetTodosByUserIdQuery } from "@/entities/todo";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 import { useParams } from "react-router-dom";
