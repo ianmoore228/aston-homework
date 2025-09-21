@@ -5,7 +5,7 @@ import type { FC } from "react";
 import { useParams } from "react-router-dom";
 import { CommentList } from "@/widgets/CommentList";
 import { useGetPostByIdQuery } from "@/entities/post";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 
 
