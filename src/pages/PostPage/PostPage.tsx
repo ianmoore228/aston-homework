@@ -1,15 +1,13 @@
 import styles from "./PostPage.module.css";
 import { PostCard } from "@/entities/post";
-import type { FC } from "react";
-// import { posts } from "@/shared/mocks/posts";
 import { useParams } from "react-router-dom";
 import { CommentList } from "@/widgets/CommentList";
 import { useGetPostByIdQuery } from "@/entities/post";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 
 
-export const PostPage: FC = () => {
+export const PostPage = () => {
 
 const PostCardWithLoading = withLoading(PostCard);
 

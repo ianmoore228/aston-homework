@@ -1,4 +1,4 @@
-import { type ComponentType, type FC } from "react";
+import { type ComponentType, type PropsWithChildren } from "react";
 import loading from "@/assets/images/loading.svg";
 import styles from "./withLoading.module.css";
 
@@ -7,7 +7,7 @@ type WithLoadingProps = {
 };
 
 export function withLoading<T extends object>(WrappedComponent: ComponentType<T>) {
-  const WithLoadingComponent: FC<T & WithLoadingProps> = ({ isFetching, ...props }) => {
+  const WithLoadingComponent = ({ isFetching, ...props }: PropsWithChildren<WithLoadingProps>) => {
     if (isFetching) {
       return (
         <div className={styles.loadingContainer}>

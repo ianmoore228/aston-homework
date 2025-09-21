@@ -5,39 +5,39 @@ import { useGetAllPostsQuery } from "@/entities/post";
 import { setFilteredPosts } from "@/entities/post";
 import { setSelectedUserId } from "@/entities/user";
 import type { Post } from "@/entities/post";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 export function usePosts() {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { userId } = useParams();
+  const { pathname } = useLocation();
+  const { userId } = useParams<{ userId?: string }>();
 
   const selectedUserId = useSelector(
     (state: RootState) => state.users.selectedUserId
   );
 
   const { data, isFetching, error } = useGetAllPostsQuery();
-
   const filteredPosts = useSelector((state: RootState) => state.posts.filtered);
 
+  const showAllPosts = pathname === "/";
+
   useEffect(() => {
-    if (userId && Number(userId) !== selectedUserId) {
+    if (!showAllPosts && userId) {
       dispatch(setSelectedUserId(Number(userId)));
     }
-  }, []);
+  }, [userId, showAllPosts, dispatch]);
 
   useEffect(() => {
     if (!data) return;
 
-    const userId = selectedUserId || 1;
-    if (userId) {
-      dispatch(setFilteredPosts(data.filter((p) => p.userId === userId)));
+    if (showAllPosts || selectedUserId == null) {
+      dispatch(setFilteredPosts(data)); 
     } else {
-      dispatch(setFilteredPosts(data));
+      dispatch(setFilteredPosts(data.filter((p) => p.userId === selectedUserId)));
     }
-  }, [data, selectedUserId, dispatch]);
+  }, [data, selectedUserId, showAllPosts, dispatch]);
 
-  const onSelectUser = (id: number) => {
+  const onSelectUser = (id: number ) => {
     dispatch(setSelectedUserId(id));
   };
 
@@ -45,8 +45,7 @@ export function usePosts() {
     posts: filteredPosts,
     isFetching,
     error,
-    setFilteredPosts: (posts: Post[]) =>
-      dispatch(setFilteredPosts(posts)),
+    setFilteredPosts: (posts: Post[]) => dispatch(setFilteredPosts(posts)),
     onSelectUser,
     selectedUserId,
   };

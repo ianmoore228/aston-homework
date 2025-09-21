@@ -1,6 +1,6 @@
-import type { FC } from "react";
 import styles from "./PhotoCard.module.css"
 import placeholderImg from "@/assets/images/imgPlaceholder.svg"
+import type { PropsWithChildren } from "react";
 
 type PhotoCardProps = {
     albumId: number;
@@ -8,7 +8,7 @@ type PhotoCardProps = {
     url: string;
 }
 
-export const PhotoCard: FC<PhotoCardProps> = ({ title, url }) => {
+export const PhotoCard = ({ title, url }: PropsWithChildren<PhotoCardProps>) => {
     return (
         <div className={styles.photoCard}>
             <div className={styles.photoContainer}>

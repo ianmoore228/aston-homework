@@ -1,7 +1,7 @@
 import { memo } from "react";
 import styles from "./Input.module.css";
 import { motion } from "framer-motion";
-import { type FC } from "react";
+import type { PropsWithChildren } from "react";
 
 interface InputProps {
     id: string;
@@ -15,7 +15,7 @@ interface InputProps {
     autoComplete?: string;
 }
 
-const InputComponent: FC<InputProps> = ({ ...rest }) => {
+const InputComponent = ({ ...rest }: PropsWithChildren<InputProps>) => {
   return (
     <motion.input
       {...rest}

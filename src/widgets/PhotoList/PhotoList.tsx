@@ -1,24 +1,35 @@
-import type { FC } from "react";
-import styles from "./PhotoList.module.css"
+import styles from "./PhotoList.module.css";
 import type { Photo } from "@/entities/photo";
 import { useParams } from "react-router-dom";
 import { PhotoCard } from "@/entities/photo";
+import { ItemList } from "@/shared/ui/ItemList";
+import type { PropsWithChildren } from "react";
 
 interface PhotoListProps {
-    photos: Photo[]
+  photos: Photo[];
 }
 
-export const PhotoList: FC<PhotoListProps> = ({photos}) => {
+export const PhotoList = ({ photos }: PropsWithChildren<PhotoListProps>) => {
+  const { albumId } = useParams();
 
-    const { albumId } = useParams();
+  const filteredPhotos = photos.filter(
+    (photo) => photo.albumId === Number(albumId)
+  );
 
-    const filteredPhotos = photos.filter((photo) => photo.albumId === Number(albumId));
-
-    return (
-        <section className={styles.photoList}>
-            {filteredPhotos.map((photo) => (
-                <PhotoCard key={photo.id} title={photo.title} url={photo.url} albumId={photo.albumId} />
-            ))}
-        </section>
-    )
-}
+  return (
+    <section className={styles.photoList}>
+      <ItemList
+        items={filteredPhotos}
+        getKey={(photo: Photo) => photo.id}
+        renderItem={(photo: Photo) => (
+          <PhotoCard
+            key={photo.id}
+            title={photo.title}
+            url={photo.url}
+            albumId={photo.albumId}
+          />
+        )}
+      />
+    </section>
+  );
+};

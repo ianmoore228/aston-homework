@@ -1,13 +1,12 @@
-
+import type { PropsWithChildren } from "react";
 import styles from "./TodoCard.module.css";
-import type { FC } from "react";
 
 interface TodoCardProps {
     title: string;
     isCompleted: boolean
 }
 
-export const TodoCard: FC<TodoCardProps> = ({title, isCompleted}) => {
+export const TodoCard = ({title, isCompleted}: PropsWithChildren<TodoCardProps>) => {
     return (
         <div className={styles.todoCard}>
         <label className={styles.todoLabel}>

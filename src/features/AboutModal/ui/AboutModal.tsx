@@ -1,13 +1,13 @@
 import { Modal } from "@/shared/ui/Modal";
 import styles from "./AboutModal.module.css";
-import { type FC } from "react";
+import type { PropsWithChildren } from "react";
 
 interface AboutModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const AboutModal: FC<AboutModalProps> = ({ isOpen, onClose }) => {
+export const AboutModal = ({ isOpen, onClose }: PropsWithChildren<AboutModalProps>) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
         <Modal.Header>

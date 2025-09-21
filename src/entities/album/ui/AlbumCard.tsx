@@ -1,14 +1,14 @@
-import type { FC } from "react";
 import styles from "./AlbumCard.module.css";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import type { PropsWithChildren } from "react";
 
 interface AlbumCardProps {
   title: string;
   albumId: number;
 }
 
-export const AlbumCard: FC<AlbumCardProps> = ({ title, albumId }) => {
+export const AlbumCard = ({ title, albumId }: PropsWithChildren<AlbumCardProps>) => {
   const { userId } = useParams();
 
   const navigate = useNavigate();

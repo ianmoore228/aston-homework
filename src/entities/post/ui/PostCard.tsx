@@ -1,7 +1,7 @@
 import styles from "./PostCard.module.css";
 import { memo } from "react";
-import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
+import type { PropsWithChildren } from "react";
 
 interface PostCardProps {
   title: string;
@@ -10,7 +10,7 @@ interface PostCardProps {
   id: number;
 }
 
-export const PostCardComponent: FC<PostCardProps> = (({ title, body, userId, id }) => {
+export const PostCardComponent = (({ title, body, userId, id }: PropsWithChildren<PostCardProps>) => {
   const navigate = useNavigate();
   const isSingle = location.pathname === `/post/${id}`; 
 

@@ -1,9 +1,8 @@
-import type { FC } from "react";
 import { AlbumList } from "@/widgets/AlbumList";
 import { useParams } from "react-router-dom";
 import { SelectUser } from "@/features/SelectUser";
 import { useGetAlbumsByUserIdQuery } from "@/entities/album";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 import { Outlet } from "react-router-dom";
 import styles from "./AlbumsPage.module.css";
@@ -12,7 +11,7 @@ import { setSelectedUserId } from "@/entities/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-export const AlbumsPage: FC = () => {
+export const AlbumsPage = () => {
   const AlbumsWithLoading = withLoading(AlbumList);
   const { userId } = useParams();
   const dispatch = useDispatch<AppDispatch>();

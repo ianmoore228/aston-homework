@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
-export const Body = ({ children }: { children: ReactNode }) => {
+export const Body = ({ children }: PropsWithChildren<{}>) => {
   return <>{children}</>;
 };

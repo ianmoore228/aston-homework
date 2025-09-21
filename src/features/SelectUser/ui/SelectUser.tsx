@@ -1,12 +1,11 @@
 import { Button } from "@/shared/ui/Button";
 import styles from "./SelectUser.module.css";
-import { type FC } from "react";
-// import { users } from "@/shared/mocks/users";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useGetAllUsersQuery } from "@/entities/user";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/providers/store";
+import type { PropsWithChildren } from "react";
 
 interface SelectUserProps {
   userId?: number;
@@ -14,7 +13,7 @@ interface SelectUserProps {
   onSelect: (id: number) => void;
 }
 
-export const SelectUser: FC<SelectUserProps> = ({ path, onSelect }) => {
+export const SelectUser = ({ path, onSelect }: PropsWithChildren<SelectUserProps>) => {
   const { data: users } = useGetAllUsersQuery();
   const selectedUserId = useSelector((state: RootState) => state.users.selectedUserId);
   const [selectedId, setSelectedId] = useState(selectedUserId);

@@ -1,13 +1,12 @@
-import type { FC } from "react";
 import { PhotoList } from "@/widgets/PhotoList";
 import { SelectAlbum } from "@/features/SelectAlbum";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 import { useGetPhotosByAlbumIdQuery } from "@/entities/photo";
 import { useParams } from "react-router-dom";
 import styles from "./PhotosPage.module.css";
 
-export const PhotosPage: FC = () => {
+export const PhotosPage = () => {
   const { albumId } = useParams();
   const PhotoListWithLoading = withLoading(PhotoList);
   const {

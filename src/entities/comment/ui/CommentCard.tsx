@@ -1,6 +1,6 @@
 import { memo } from "react";
 import styles from "./CommentCard.module.css";
-import { type FC } from "react";
+import type { PropsWithChildren } from "react";
 
 export interface CommentCardProps {
   name: string;
@@ -9,7 +9,7 @@ export interface CommentCardProps {
   postId: number;
 }
 
-const CommentCardComponent: FC<CommentCardProps> = ({ name, email, body }) => {
+const CommentCardComponent= ({ name, email, body }: PropsWithChildren<CommentCardProps>) => {
   return (
     <div className={styles.commentCard}>
       <p className={styles.commentCardName}>{name}</p>

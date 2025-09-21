@@ -1,15 +1,14 @@
 import { PostList } from "@/widgets/PostList/PostList";
-import { withLoading } from "@/shared/lib/hoc/withLoading";
+import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { PostLengthFilter } from "@/features/PostLengthFilter";
 import styles from "./PostListPage.module.css";
 import { SelectUser } from "@/features/SelectUser";
-import type { FC } from "react";
 import { usePosts } from "@/features/PostList";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 
 const PostWithLoading = withLoading(PostList);
 
-export const PostListPage: FC = () => {
+export const PostListPage = () => {
   const {
     posts,
     setFilteredPosts,

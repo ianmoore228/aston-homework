@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { Post } from "@/entities/post";
 import { filterByLength } from "../index.ts";
-import React from "react";
 import styles from "./PostLengthFilter.module.css";
 import { Input } from "@/shared/ui/Input";
 import { Button } from "@/shared/ui/Button";
-import { type FC } from "react";
+import type { PropsWithChildren } from "react";
+import type { ChangeEvent } from "react";
 
 interface PostLengthFilterProps {
   posts: Post[];
@@ -14,17 +14,15 @@ interface PostLengthFilterProps {
   isLoading?: boolean;
 }
 
-export const PostLengthFilter: FC<PostLengthFilterProps> = ({
+export const PostLengthFilter = ({
   posts,
   userId,
   onFilter,
   isLoading
-}) => {
+}: PropsWithChildren<PostLengthFilterProps>) => {
   const [min, setMin] = useState("0");
   const [max, setMax] = useState("200");
   const [error, setError] = useState("");
-
-  console.log(userId + " userId");
 
   function handleFilter() {
     let filtered: Post[] = posts;
@@ -62,20 +60,18 @@ export const PostLengthFilter: FC<PostLengthFilterProps> = ({
   };
 
   const handleSetMin = 
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleSetNumber(e.target.value, "min");
+    (event: ChangeEvent<HTMLInputElement>) => {
+    handleSetNumber(event.target.value, "min");
   };
   
-  const handleSetMax = (e: React.ChangeEvent<HTMLInputElement>) =>{
-    handleSetNumber(e.target.value, "max");
+  const handleSetMax = (event: ChangeEvent<HTMLInputElement>) =>{
+    handleSetNumber(event.target.value, "max");
   };
 
   if (isLoading) {
     return null;
   }
-  // console.log( )
-
-
+ 
   return (
     <div className={styles.postLengthFilter}>
       <p className={styles.postLengthFilterTitle}>Фильтр по длине заголовка:</p>

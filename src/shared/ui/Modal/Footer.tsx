@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
-export const Footer = ({ children }: { children: ReactNode }) => {
+export const Footer = ({ children }: PropsWithChildren<{}>) => {
     return <>{children}</>;
   };
   

@@ -1,14 +1,9 @@
-import type { ReactNode } from "react";
 import { Header } from "@/widgets/LayoutHeader";
 import { Footer } from "@/widgets/LayoutFooter";
 import styles from "./MainLayout.module.css";
-import { type FC } from "react";
+import type { PropsWithChildren } from "react";
 
-interface MainLayoutProps {
-  children: ReactNode;
-}
-
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout = ({ children }: PropsWithChildren<{}>) => {
   return (
     <>
       <Header />

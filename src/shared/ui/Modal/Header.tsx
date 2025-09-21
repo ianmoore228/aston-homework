@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
-export const Header = ({ children }: { children: ReactNode }) => {
+export const Header = ({ children }: PropsWithChildren<{}> ) => {
   return <>{children}</>;
 };

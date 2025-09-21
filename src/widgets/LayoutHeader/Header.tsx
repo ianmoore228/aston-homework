@@ -1,12 +1,11 @@
 import styles from "./header.module.css";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { AboutModal } from "@/features/AboutModal";
-import { type FC } from "react";
 import { useState } from "react";
 import { Button } from "@/shared/ui/Button";
 import { UserTabs } from "@/widgets/UserTabs";
 
-export const Header: FC = () => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpen() {
