@@ -10,7 +10,7 @@ import { useParams, useLocation } from "react-router-dom";
 export function usePosts() {
   const dispatch = useDispatch<AppDispatch>();
   const { pathname } = useLocation();
-  const { userId } = useParams<{ userId?: string }>();
+  const { userId } = useParams();
 
   const selectedUserId = useSelector(
     (state: RootState) => state.users.selectedUserId
