@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "@/app/providers/store";
 import { useGetAllPostsQuery } from "@/entities/post";
-import { setFilteredPosts } from "@/entities/post";
+import { setFilteredPosts, selectFilteredPosts } from "@/entities/post";
 import { setSelectedUserId } from "@/entities/user";
 import type { Post } from "@/entities/post";
 import { useParams, useLocation } from "react-router-dom";
@@ -17,7 +17,7 @@ export function usePosts() {
   );
 
   const { data, isFetching, error } = useGetAllPostsQuery();
-  const filteredPosts = useSelector((state: RootState) => state.posts.filtered);
+  const filteredPosts =  useSelector(selectFilteredPosts);
 
   const showAllPosts = pathname === "/";
 
