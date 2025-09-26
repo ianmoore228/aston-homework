@@ -1,4 +1,4 @@
-export type { Comment } from "./model/comment";
+export type { Comment } from "./model/types";
 export { CommentCard } from "./ui/CommentCard";
 export { useGetCommentByPostIdQuery, useGetAllCommentsQuery} from "./api/commentsApi";
 export { commentsApi } from "./api/commentsApi";
