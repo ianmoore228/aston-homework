@@ -19,15 +19,13 @@ export const photosApi = createApi({
     getAllPhotos: build.query<Photo[], void>({
       query: () => 'photos',
       keepUnusedDataFor: 70,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((photo) => ({ type: 'Photos' as const, id: photo.id })),
-              { type: 'Photos', id: 'LIST' },
-            ]
-          : [{ type: 'Photos', id: 'LIST' }],
+      providesTags: () => [{ type: 'Photos', id: 'LIST' }],
+    }),
+    refreshUserPhotos: build.mutation<void, number>({
+      queryFn: () => ({ data: undefined }),
+      invalidatesTags: (_, __, userId) => [{ type: 'Photos', id: `ALBUM-${userId}` }],
     }),
   }),
 })
 
-export const { useGetPhotoByIdQuery, useGetPhotosByAlbumIdQuery, useGetAllPhotosQuery } = photosApi
+export const { useRefreshUserPhotosMutation, useGetPhotoByIdQuery, useGetPhotosByAlbumIdQuery, useGetAllPhotosQuery } = photosApi

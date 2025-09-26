@@ -6,7 +6,7 @@ export const albumsApi = createApi({
   tagTypes: ['Albums'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (build) => ({
-    getAlbumById: build.query<Album[], number>({
+    getAlbumById: build.query<Album, number>({
       query: (id) => `albums/${id}`,
       keepUnusedDataFor: 70,
       providesTags: (_, __, id) => [{ type: 'Albums', id }],
@@ -16,17 +16,17 @@ export const albumsApi = createApi({
       keepUnusedDataFor: 70,
       providesTags: (_, __, id) => [{ type: 'Albums', id: `USER-${id}` }],
     }),
-    getAllAlbums: build.query<Album[], void>({
+    getAllAlbums: build.query<Album[], number>({
       query: () => 'albums',
       keepUnusedDataFor: 70,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((album) => ({ type: 'Albums' as const, id: album.id })),
-              { type: 'Albums', id: 'LIST' },
-            ]
-          : [{ type: 'Albums', id: 'LIST' }],
+      providesTags: () => [{ type: 'Albums', id: 'LIST' }],
     }),
+    refreshUserAlbums: build.mutation<void, number>({
+      queryFn: () => ({ data: undefined }),
+      invalidatesTags: (_, __, userId) => [
+        { type: 'Albums', id: `USER-${userId}` },
+      ],
+    })
   }),
 })
 
@@ -34,4 +34,5 @@ export const {
   useGetAlbumByIdQuery,
   useGetAlbumsByUserIdQuery,
   useGetAllAlbumsQuery,
+  useRefreshUserAlbumsMutation
 } = albumsApi

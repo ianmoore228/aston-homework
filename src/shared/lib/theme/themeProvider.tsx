@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ThemeContext } from "./ThemeContext";
 import type { PropsWithChildren } from "react";
 
-export const ThemeProvider = ({ children }: PropsWithChildren<{}>) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [isDark, setDark] = useState(false);
 
   useEffect(() => {

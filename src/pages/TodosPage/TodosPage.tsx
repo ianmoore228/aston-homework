@@ -9,21 +9,27 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "@/app/providers/store";
 import { setSelectedUserId } from "@/entities/user";
 import { useEffect } from "react";
+import { Button } from "@/shared/ui/Button";
+import { useRefreshUserTodosMutation } from "@/entities/todo";
 
 export const TodosPage = () => {
   const TodoListWithLoading = withLoading(TodoList);
   const { userId } = useParams();
   const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
-    if (userId && Number(userId) !== selectedUserId) {
-      dispatch(setSelectedUserId(Number(userId)));
-    }
-  }, []);
+  const [refreshTodos] = useRefreshUserTodosMutation();
+
+  const handleRefresh = () => refreshTodos(Number(userId));
 
   const selectedUserId = useSelector(
     (state: RootState) => state.users.selectedUserId
   );
+
+  useEffect(() => {
+    if (userId && Number(userId) !== selectedUserId) {
+      dispatch(setSelectedUserId(Number(userId)));
+    }
+  }, [dispatch, userId, selectedUserId]);
 
   const activeUserId = Number(userId || selectedUserId);
 
@@ -42,11 +48,14 @@ export const TodosPage = () => {
         (error ? (
           <ErrorMessage />
         ) : (
+          <div className={styles.todosPageContainer}>
           <SelectUser
             userId={activeUserId}
             path="todos"
             onSelect={handleSelectUser}
           />
+          <Button type="button" onClick={handleRefresh}>Invalidate</Button>
+          </div>
         ))}
     </div>
   );

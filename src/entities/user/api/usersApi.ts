@@ -14,13 +14,7 @@ export const usersApi = createApi({
     getAllUsers: build.query<User[], void>({
       query: () => 'users',
       keepUnusedDataFor: 70,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((user) => ({ type: 'Users' as const, id: user.id })),
-              { type: 'Users', id: 'LIST' },
-            ]
-          : [{ type: 'Users', id: 'LIST' }],
+      providesTags: () => [{ type: 'Users', id: 'LIST' }],
     }),
   }),
 })

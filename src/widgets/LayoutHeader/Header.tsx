@@ -1,4 +1,4 @@
-import styles from "./header.module.css";
+import styles from "./Header.module.css";
 import { ThemeSwitcher } from "@/features/themeSwitcher";
 import { AboutModal } from "@/features/AboutModal";
 import { useState } from "react";

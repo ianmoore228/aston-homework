@@ -3,7 +3,7 @@ import { Footer } from "@/widgets/LayoutFooter";
 import styles from "./MainLayout.module.css";
 import type { PropsWithChildren } from "react";
 
-export const MainLayout = ({ children }: PropsWithChildren<{}>) => {
+export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
