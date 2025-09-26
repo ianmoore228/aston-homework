@@ -14,13 +14,7 @@ export const commentsApi = createApi({
     getAllComments: build.query<Comment[], void>({
       query: () => 'comments',
       keepUnusedDataFor: 70,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((comment) => ({ type: 'Comments' as const, id: comment.id })),
-              { type: 'Comments', id: 'LIST' },
-            ]
-          : [{ type: 'Comments', id: 'LIST' }],
+      providesTags: () => [{ type: 'Comments', id: 'LIST' }],
     }),
   }),
 })

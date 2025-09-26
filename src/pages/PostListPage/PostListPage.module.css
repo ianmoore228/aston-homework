@@ -17,6 +17,10 @@
   margin-left: 5%;
 } 
 
+.refreshButton {
+  width: 100%;
+}
+
 @media screen and (max-width: 650px) {
   .postListPage {
     flex-direction: column-reverse;

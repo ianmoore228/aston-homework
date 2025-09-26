@@ -3,9 +3,12 @@ import { withLoading } from "@/shared/lib/hoc/WithLoading";
 import { PostLengthFilter } from "@/features/PostLengthFilter";
 import styles from "./PostListPage.module.css";
 import { SelectUser } from "@/features/SelectUser";
-import type { FC } from "react";
+import { type FC } from "react";
 import { usePosts } from "@/features/PostList";
 import { ErrorMessage } from "@/shared/ui/ErrorMessage";
+import { Button } from "@/shared/ui/Button";
+import { useRefreshAllPostsMutation } from "@/entities/post";
+import { useParams } from "react-router-dom";
 
 const PostWithLoading = withLoading(PostList);
 
@@ -19,6 +22,12 @@ export const PostListPage: FC = () => {
     selectedUserId,
   } = usePosts();
 
+  const { userId } = useParams();
+
+  const [refreshAllPosts] = useRefreshAllPostsMutation();
+
+  const handleRefresh = () => refreshAllPosts();
+
   return (
     <div className={styles.postListPage}>
       <div className={styles.postListPageContent}>
@@ -30,10 +39,14 @@ export const PostListPage: FC = () => {
               <ErrorMessage />
             ) : (
               <div className={styles.filters}>
+                <div className={styles.refreshButton}>
+                <Button type="button" onClick={handleRefresh}>
+                  Invalidate
+                </Button>
+                </div>
                 <PostLengthFilter
+                 userId={userId ? Number(userId) : null}
                   isLoading={isFetching}
-                  userId={selectedUserId || 1}
-                  posts={posts}
                   onFilter={setFilteredPosts}
                 />
                 <SelectUser

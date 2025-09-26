@@ -19,15 +19,13 @@ export const todosApi = createApi({
     getAllTodos: build.query<Todo[], void>({
       query: () => 'todos',
       keepUnusedDataFor: 70,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map((todo) => ({ type: 'Todos' as const, id: todo.id })),
-              { type: 'Todos', id: 'LIST' },
-            ]
-          : [{ type: 'Todos', id: 'LIST' }],
+      providesTags: () => [{ type: 'Todos', id: 'LIST' }],
+    }),
+    refreshUserTodos: build.mutation<void, number>({
+      queryFn: () => ({ data: undefined }),
+      invalidatesTags: (_, __, userId) => [{ type: 'Todos', id: `USER-${userId}` }],
     }),
   }),
 })
 
-export const { useGetTodoByIdQuery, useGetTodosByUserIdQuery, useGetAllTodosQuery } = todosApi
+export const { useRefreshUserTodosMutation, useGetTodoByIdQuery, useGetTodosByUserIdQuery, useGetAllTodosQuery } = todosApi

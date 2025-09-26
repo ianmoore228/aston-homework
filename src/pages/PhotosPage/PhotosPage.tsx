@@ -6,6 +6,8 @@ import { ErrorMessage } from "@/shared/ui/ErrorMessage";
 import { useGetPhotosByAlbumIdQuery } from "@/entities/photo";
 import { useParams } from "react-router-dom";
 import styles from "./PhotosPage.module.css";
+import { useRefreshUserPhotosMutation } from "@/entities/photo";
+import { Button } from "@/shared/ui/Button";
 
 export const PhotosPage: FC = () => {
   const { albumId } = useParams();
@@ -16,11 +18,17 @@ export const PhotosPage: FC = () => {
     error,
   } = useGetPhotosByAlbumIdQuery(Number(albumId));
 
+  const [refreshUserPhotos] = useRefreshUserPhotosMutation();
+
+  const handleRefresh = () => refreshUserPhotos(Number(albumId));
+
   return (
     <div className={styles.photosPage}>
       <PhotoListWithLoading photos={photos || []} isFetching={isFetching} />
       {!isFetching &&
-        (error ? <ErrorMessage /> : <SelectAlbum albumId={Number(albumId)} />)}
+        (error ? <ErrorMessage /> : <><SelectAlbum albumId={Number(albumId)} />
+        <Button type="button" onClick={handleRefresh}>Invalidate</Button>
+        </>)}
     </div>
   );
 };

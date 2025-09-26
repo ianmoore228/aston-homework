@@ -4,6 +4,13 @@
     justify-content: flex-end;
 }
 
+.todosPageContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+}
+
 @media screen and (max-width: 650px) {
     .todosPage {
         flex-direction: column-reverse;

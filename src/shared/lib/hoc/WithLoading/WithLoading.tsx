@@ -1,6 +1,6 @@
 import { type ComponentType, type FC } from "react";
 import loading from "@/assets/images/loading.svg";
-import styles from "./withLoading.module.css";
+import styles from "./WithLoading.module.css";
 
 type WithLoadingProps = {
   isFetching: boolean;

@@ -1,12 +1,14 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createEntityAdapter, type PayloadAction } from "@reduxjs/toolkit";
 
 interface UsersState {
-  selectedUserId: number;
+  id: number;
 }
 
-const initialState: UsersState = {
+const usersAdapter = createEntityAdapter<UsersState>();
+
+const initialState = usersAdapter.getInitialState({
   selectedUserId: 1,
-};
+});
 
 const usersSlice = createSlice({
   name: "users",
@@ -14,10 +16,19 @@ const usersSlice = createSlice({
   reducers: {
     setSelectedUserId: (state, action: PayloadAction<number>) => {
       state.selectedUserId = action.payload;
-    },
+    }
   },
 });
 
-export const { setSelectedUserId } = usersSlice.actions;
+export const {
+  setSelectedUserId,
+} = usersSlice.actions;
 
 export const usersReducer = usersSlice.reducer;
+
+export const {
+  selectAll: selectAllUsers,
+  selectIds: selectUserIds,
+} = usersAdapter.getSelectors<{ users: typeof initialState }>(
+  (state) => state.users
+);

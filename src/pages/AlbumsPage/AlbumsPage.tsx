@@ -11,6 +11,8 @@ import type { RootState, AppDispatch } from "@/app/providers/store";
 import { setSelectedUserId } from "@/entities/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Button } from "@/shared/ui/Button";
+import { useRefreshUserAlbumsMutation } from "@/entities/album";
 
 export const AlbumsPage: FC = () => {
   const AlbumsWithLoading = withLoading(AlbumList);
@@ -22,13 +24,16 @@ export const AlbumsPage: FC = () => {
     if (userId && Number(userId) !== selectedUserId) {
       dispatch(setSelectedUserId(Number(userId)));
     }
-  }, []);
+  }, [dispatch, userId, selectedUserId]);
 
   const activeUserId = Number(userId || selectedUserId);
 
   const { data: albums, error, isFetching } = useGetAlbumsByUserIdQuery(activeUserId);
+  const [refreshAlbums] = useRefreshUserAlbumsMutation();
 
   const handleSelectUser = (id: number) => dispatch(setSelectedUserId(id));
+
+  const handleRefresh = () => refreshAlbums(activeUserId);
 
 
   console.log(activeUserId);
@@ -42,11 +47,14 @@ export const AlbumsPage: FC = () => {
           (error ? (
             <ErrorMessage />
           ) : (
+            <>
             <SelectUser
               userId={activeUserId}
               path="albums"
               onSelect={handleSelectUser}
             />
+            <Button onClick={handleRefresh} type="button">Invalidate</Button>
+            </>
           ))}
       </div>
     </div>
